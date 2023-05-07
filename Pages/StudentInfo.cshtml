@@ -1,0 +1,37 @@
+﻿@page
+@model ASP_NET_Simulation.Pages.StudentInfoModel
+@{
+    ViewData["Title"] = "Student Info";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Balance</th>
+            <th>Financial Aid</th>
+            <th>Tuition</th>
+            <th>Fees</th>
+            <th>Scholarships</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model.Students)
+        {
+            <tr>
+                <td>@student.Id</td>
+                <td>@student.Name</td>
+                <td>@student.Balance</td>
+                <td>@student.FinancialAid</td>
+                <td>@student.Tuition</td>
+                <td>@student.Fees</td>
+                <td>@student.Scholarships</td>
+                <td><a href="EditStudent?id=@student.Id">Edit</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

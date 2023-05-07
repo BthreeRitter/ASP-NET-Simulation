@@ -1,0 +1,2 @@
+# ASP-NET-Simulation
+ My own ASP.net version of the test problem coming up for interview. This simulates the application that will be sent to me as well as will already solve or do the coding challenge of reading and writing to a json file to simulate a databse based on entries for student financial information. I will also add in extra features, like search and sorting, as well as based on preferences like for instance if debt ammount > 10000, gather all users who satisfy that condfition and do some action, this will simulate perhaps sending an email.
