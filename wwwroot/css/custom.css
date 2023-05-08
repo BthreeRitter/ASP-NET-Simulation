@@ -1,0 +1,80 @@
+﻿/* CMU Colors */
+:root {
+    --cmu-red: #C41230;
+    --cmu-gray: #5c6670;
+    --cmu-light-gray: #8d929a;
+}
+
+/* Header */
+header {
+    background-color: var(--cmu-red);
+    color: white;
+    padding: 1rem;
+}
+
+    header h1 {
+        margin: 0;
+    }
+
+/* Navbar */
+nav {
+    background-color: var(--cmu-gray);
+    margin-bottom: 1rem;
+}
+
+    nav a {
+        color: white;
+    }
+
+/* Footer */
+footer {
+    background-color: var(--cmu-light-gray);
+    color: var(--cmu-gray);
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Apply bootstrap classes to Razor components */
+form {
+    margin-bottom: 1rem;
+}
+
+table {
+    margin-bottom: 1rem;
+}
+
+.btn-cmu-red {
+    background-color: var(--cmu-red);
+    color: white;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.logo-container {
+    animation-name: fadeIn;
+    animation-duration: 2s; /* Adjust the duration as needed */
+    animation-timing-function: ease-in-out; /* Choose an easing function */
+    animation-fill-mode: forwards; /* Ensures the final state of the animation is maintained */
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #BDBEC0; /* CMU red background color */
+    background-image: url("path-to-cmu-logo.png"); /* Path to the CMU logo */
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+
+
