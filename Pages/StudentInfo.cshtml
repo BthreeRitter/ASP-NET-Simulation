@@ -206,60 +206,70 @@
         );
     </script>
 
-        <script>
-            function sortTable(columnIndex, dataType) {
-                var table = document.getElementById("studentsTable");
-                var switching = true;
-                var rows, i, x, y, shouldSwitch, direction, switchCount = 0;
-                direction = "desc";
 
-                while (switching) {
-                    switching = false;
-                    rows = table.rows;
+    <script>
+        // This script adds sorting functionality to a table by column.
+        // The script supports sorting in ascending and descending order, and handles both numeric and string data types.
+        function sortTable(columnIndex, dataType) {
+            var table = document.getElementById("studentsTable");
+            var switching = true;
+            var rows, i, x, y, shouldSwitch, direction, switchCount = 0;
+            direction = "desc"; // Initial sorting direction is descending.
 
-                    for (i = 1; i < (rows.length - 1); i++) {
-                        shouldSwitch = false;
-                        x = rows[i].getElementsByTagName("TD")[columnIndex];
-                        y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
+            // Continue sorting until no more swaps are needed.
+            while (switching) {
+                switching = false;
+                rows = table.rows;
 
-                        if (dataType === 'number') {
-                            if (direction === "desc") {
-                                if (parseFloat(x.innerHTML) < parseFloat(y.innerHTML)) {
-                                    shouldSwitch = true;
-                                    break;
-                                }
-                            } else if (direction === "asc") {
-                                if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
-                                    shouldSwitch = true;
-                                    break;
-                                }
+                // Iterate through all rows in the table.
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[columnIndex];
+                    y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
+
+                    // Determine if a swap is needed based on the data type and sorting direction.
+                    if (dataType === 'number') {
+                        if (direction === "desc") {
+                            if (parseFloat(x.innerHTML) < parseFloat(y.innerHTML)) {
+                                shouldSwitch = true;
+                                break;
                             }
-                        } else {
-                            if (direction === "desc") {
-                                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                                    shouldSwitch = true;
-                                    break;
-                                }
-                            } else if (direction === "asc") {
-                                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                                    shouldSwitch = true;
-                                    break;
-                                }
+                        } else if (direction === "asc") {
+                            if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
+                                shouldSwitch = true;
+                                break;
                             }
                         }
-                    }
-
-                    if (shouldSwitch) {
-                        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                        switching = true;
-                        switchCount++;
                     } else {
-                        if (switchCount === 0 && direction === "desc") {
-                            direction = "asc";
-                            switching = true;
+                        if (direction === "desc") {
+                            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                                shouldSwitch = true;
+                                break;
+                            }
+                        } else if (direction === "asc") {
+                            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                                shouldSwitch = true;
+                                break;
+                            }
                         }
                     }
                 }
+
+                // If a swap is needed, perform the swap and update the switching flag.
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    switchCount++;
+                } else {
+                    // If no swaps were made and the current sorting direction is descending,
+                    // change the sorting direction to ascending and repeat the sorting process.
+                    if (switchCount === 0 && direction === "desc") {
+                        direction = "asc";
+                        switching = true;
+                    }
+                }
             }
-        </script>
+        }
+    </script>
+
 }

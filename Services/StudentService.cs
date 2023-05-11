@@ -11,11 +11,15 @@ namespace ASP_NET_Simulation.Services
     {
         private readonly string _dataPath;
 
+        // Constructor for the StudentService class.
+        // Initializes the _dataPath variable with the path to the Students.json file.
         public StudentService()
         {
             _dataPath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "Students.json");
         }
 
+        // Method to fetch the list of students asynchronously.
+        // Reads the contents of the Students.json file, deserializes the JSON, and returns a list of Student objects.
         public async Task<List<Student>> GetStudentsAsync()
         {
             using StreamReader reader = new StreamReader(_dataPath);
@@ -23,6 +27,9 @@ namespace ASP_NET_Simulation.Services
             return JsonConvert.DeserializeObject<List<Student>>(json);
         }
 
+        // Method to update a student's information asynchronously.
+        // Accepts a Student object with updated information, finds the matching student in the list,
+        // replaces the old student data with the updated data, and saves the changes to the Students.json file.
         public async Task UpdateStudentAsync(Student updatedStudent)
         {
             List<Student> students = await GetStudentsAsync();
@@ -35,4 +42,5 @@ namespace ASP_NET_Simulation.Services
             }
         }
     }
+
 }
